@@ -128,9 +128,6 @@ def listVideos(url):
         if urlNext!="":
           if urlNext.find("/video//")>=0:
             urlNext=urlNext.replace("/video//","/video/"+tempTitle+"/")
-          fh = open("d:\\html.txt", 'w')
-          fh.write(urlNext)
-          fh.close()
           addDir(translation(30001),urlNext,'listVideos',"")
         xbmcplugin.endOfDirectory(pluginhandle)
         if forceViewMode==True:
