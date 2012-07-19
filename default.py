@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import urllib,urllib2,re,xbmcplugin,xbmcgui,sys,xbmcaddon,base64,httplib,socket,time
-from pyamf import remoting
 
 pluginhandle = int(sys.argv[1])
 xbox = xbmc.getCondVisibility("System.Platform.xbox")
