@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 import urllib,urllib2,re,xbmcplugin,xbmcgui,sys,xbmcaddon,base64,httplib,socket,time
 
+socket.setdefaulttimeout(30)
 pluginhandle = int(sys.argv[1])
-xbox = xbmc.getCondVisibility("System.Platform.xbox")
 settings = xbmcaddon.Addon(id='plugin.video.cbsnews_com')
 translation = settings.getLocalizedString
 
@@ -197,12 +197,8 @@ def cleanTitle(title):
 
 def getUrl(url):
         req = urllib2.Request(url)
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:11.0) Gecko/20100101 Firefox/13.0')
-        if xbox==True:
-          socket.setdefaulttimeout(30)
-          response = urllib2.urlopen(req)
-        else:
-          response = urllib2.urlopen(req,timeout=30)
+        req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; rv:11.0) Gecko/20100101 Firefox/14.0')
+        response = urllib2.urlopen(req)
         link=response.read()
         response.close()
         return link
