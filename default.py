@@ -174,12 +174,12 @@ def playVideo(url):
           id=match[0]
         elif len(match2)>0:
           id=match2[0]
-        content = getUrl("http://api.cnet.com/rest/v1.0/video?videoId="+id+"&iod=images,videoMedia,relatedLink,breadcrumb,relatedAssets,broadcast,lowcache&partTag=cntv")
+        content = getUrl("http://api.cnet.com/rest/v1.0/video?videoId="+id+"&iod=images,videoMedia,relatedLink,breadcrumb,relatedAssets,broadcast,lowcache&players=Download,RTMP&partTag=cntv")
         spl=content.split('<VideoMedia id=')
         maxBitrate=0
         for i in range(1,len(spl),1):
             entry=spl[i]
-            if entry.find("<Player>Streaming</Player>")>=0:
+            if entry.find("<DeliveryUrl>")>=0:
               match=re.compile('<BitRate>(.+?)</BitRate>', re.DOTALL).findall(entry)
               bitrate=int(match[0])
               if bitrate>maxBitrate:
